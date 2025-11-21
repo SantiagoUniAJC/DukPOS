@@ -18,6 +18,8 @@ Construir un sistema POS profesional, modular y escalable para una cadena de tie
 
 - **Base de datos MySQL**: Utilizar MySQL como base de datos relacional para almacenar productos, ventas, usuarios, inventarios y demás datos estructurados.
 
+- **Laravel Spatie Permission ^6.23**: Para la gestión de roles y permisos de usuarios (Cajero, Supervisor, Administrador).
+
 ## Alcance (MVP)
 
 ### Funcionalidades mínimas necesarias para arrancar en producción en sucursales:
