@@ -1,65 +1,169 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="AppWebTennis/public/images/logo.png" width="100" alt="DukveD Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://github.com/SantiagoUniAJC/DukPOS"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<!-- version de PHP -->
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/php-v/laravel/framework" alt="PHP Version"></a>
+<a href="#"><img src="https://img.shields.io/packagist/v/laravel/framework" alt=""></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Objetivos del Proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Construir un sistema POS profesional, modular y escalable para una cadena de tiendas de tenis con múltiples sucursales físicas. Debe soportar ventas en tienda, gestión de inventario y transferencias entre sucursales, control de cajas, reportes comerciales, gestión de clientes y productos, integraciones de pago y administración centralizada:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Ecosistema tecnológico propuesto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laraval V12** Utilizar Laravel (PHP) como framework backend principal, con Blade/Livewire para el frontend. Laravel ofrece una base sólida, ecosistema maduro y herramientas integradas para autenticación, colas, notificaciones y más.
 
-## Learning Laravel
+- **Base de datos MySQL**: Utilizar MySQL como base de datos relacional para almacenar productos, ventas, usuarios, inventarios y demás datos estructurados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Alcance (MVP)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Funcionalidades mínimas necesarias para arrancar en producción en sucursales:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Login / autenticación y control de roles (Cajero, Supervisor, Administrador)**
+- **Pantalla de venta (POS) con búsqueda por SKU, código de barras y nombre.**
+- **Apertura/cierre de caja por usuario por sucursal.**
+- **Gestión de productos: SKU, tallas, colores, stock por sucursal, precio, costo, imágenes.**
+- **Gestión de clientes (básica): nombre, contacto, historial de compras.**
+- **Inventario por sucursal + ajustes manuales y recepción de compras.**
+- **Facturación / recibos (impresión/ticket) y exportación (PDF).**
+- **Reportes básicos: ventas por día/sucursal, top productos, control de caja.**
+- **Registro de usuarios y auditoría de acciones (quién hizo qué).**
+- **Soporte para varias sucursales y vista centralizada.**
+- **Exportes CSV / Excel para contabilidad.**
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Perfiles funcionales (detallados)
 
-### Premium Partners
+- **Administrador: acceso total, configuración global, crear sucursales, usuarios.**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **Supervisor / Gerente de Sucursal: reportes extendidos de su sucursal, ajuste de stock, devoluciones aprobadas.**
 
-## Contributing
+- **Vendedor : realizar ventas, buscar productos, gestionar carrito.**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Cajero: operar POS, abrir/cerrar caja, registrar ventas y devoluciones.**
 
-## Code of Conduct
+- **Contabilidad (opcional): acceso a exportes y reportes contable**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## POS (flujo de venta)
 
-## Security Vulnerabilities
+- **Selección de sucursal.**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Crear venta: agregar productos por código, escanear, ajustar cantidad, aplicar descuento global o por línea.**
+
+- **Manejar tallas/variantes: cuando un producto tenga variantes (talla, color), selección clara en la UI.**
+- **Métodos de pago: efectivo, tarjeta (pos/pasarela), transferencia, cupón/regalo.**
+
+- **Cierre de venta: generar recibo, disminuir stock en la sucursal, registrar en caja.**
+
+- **Notas en venta (ej. reserva, pedido a otra sucursal).**
+
+## Caja
+
+- **Apertura de caja: monto inicial.**
+
+- **Movimientos de caja: ingreso/egreso (gastos), cierre de caja diario con conciliación.**
+
+- **Historial y auditoría de cierres.**
+
+## Inventario
+
+- **Stock por sucursal y stock total consolidado.**
+
+- **Recepciones (entradas): compras a proveedor o transferencias entre sucursales.**
+
+- **Salidas: ventas, ajustes por pérdida/rotura, devoluciones.**
+
+- **Alertas por stock mínimo.**
+
+- **Lote/serie (opcional) — no crítico para tienda de tenis, salvo que lo necesites.**
+## Productos y variantes
+
+- **Producto padre + variantes por talla/color.**
+
+- **SKU único por variante (recomendado).**
+
+- **Gestión de múltiples precios (precio público, precio por promoción, precio mayorista).**
+- **Imágenes y descripción.**
+
+## Clientes y fidelización
+
+- **Registro sencillo: nombre, teléfono, email, notas.**
+
+- **Historial de compra por cliente.**
+
+- **Programa de puntos/cupones (extra, para fase posterior).**
+## Reportes
+
+- **Ventas por día/semana/mes por sucursal y consolidado.**
+
+- **Top 10 productos vendidos.**
+
+- **Margen bruto / costos.**
+
+- **Movimientos de caja e historial de cierres.**
+
+- **Inventario valorizado por sucursal.**
+
+## Integraciones
+
+- **Impresora de tickets (local) — idealmente usar impresión a navegador o mediante un pequeño servicio local.**
+
+- **Pasarelas de pago (integrar POS o gateway según país).**
+
+- **ERP/contabilidad (exportes o API).**
+
+- **Barcode scanner (entrada de teclado HID).**
+
+## 4. Requisitos no funcionales
+
+- **Autenticación segura (Laravel Fortify ya en composer).**
+
+- **Multi-tenant lógico por sucursal (misma base, separación por sucursal en datos).**
+
+- **Alta disponibilidad y tolerancia a fallos mínima: backups diarios, snapshots.**
+
+- **Escalabilidad horizontal en la capa web (Docker / Kubernetes posible).**
+
+- **Latencia baja en POS: interfaz rápida; minimizar round-trips a servidor.**
+
+- **Logs y auditoría (quien hizo qué y cuándo).**
+
+- **Seguridad: OWASP, cifrado de datos sensibles, protección CSRF, rate limiting.**
+
+- **Localización: español (Colombia) por defecto con posibilidad de más idiomas.**
+
+- **Accesibilidad y UI responsive (tablets/PCs de caja).**
+
+## Arquitectura propuesta (alto nivel)
+
+- **Frontend: Blade + Livewire (Flux/Volt) — UI reactiva sin SPA completa; componentes para POS, formularios y reportes.**
+
+- **Backend: Laravel 12 (PHP ^8.2) con Fortify para autenticación.**
+
+- **Base de datos: MySQL. Diseño relacional normalizado con tablas: users, clientes, sucursales,  productos, variantes, inventarios, ventas, lineas_venta, cajas, movimientos_caja, clientes, proveedores, transferencias, logs.**
+
+- **Capa de servicios: servicios PHP (Domain Services) para lógica de stock, cierre de caja, cálculo de precio/margen — separar lógica de controladores.**
+
+- **Repositorio: https://github.com/SantiagoUniAJC/DukPOS**
+
+- **Colas: Redis + Laravel Queue para tareas asíncronas (envíos de correo, generación de reportes pesados, sincronización).**
+
+- **Cache: Redis para caches de catálogo y sesiones.**
+
+- **File Storage: S3 compatible o almacenamiento local para imágenes de productos.**
+
+- **CI/CD: GitHub Actions / GitLab CI para tests y despliegue automatizado.**
+
+- **Monitoreo: Sentry (errores), Prometheus/Grafana u otros para métricas.**
+
+
+
+
+
+
 
 ## License
 
