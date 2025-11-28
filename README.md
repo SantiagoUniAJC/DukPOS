@@ -14,7 +14,7 @@ Construir un sistema POS profesional, modular y escalable para una cadena de tie
 
 ## Ecosistema tecnológico propuesto
 
-- **Laraval V12** Utilizar Laravel (PHP) como framework backend principal, con Blade/Livewire para el frontend. Laravel ofrece una base sólida, ecosistema maduro y herramientas integradas para autenticación, colas, notificaciones y más.
+- **Laraval V12.39.0** Utilizar Laravel (PHP V8.4.8) como framework backend principal, con Blade/Livewire para el frontend. Laravel ofrece una base sólida, ecosistema maduro y herramientas integradas para autenticación, colas, notificaciones y más.
 
 - **Base de datos MySQL**: Utilizar MySQL como base de datos relacional para almacenar productos, ventas, usuarios, inventarios y demás datos estructurados.
 

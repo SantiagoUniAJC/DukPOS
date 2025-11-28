@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Muestra el total de usuarios en el header
+        view()->composer('components.layouts.app.header', function ($view) {
+            $totalUsers = \App\Models\User::count();
+            $view->with('totalUsers', $totalUsers);
+        });
     }
 }

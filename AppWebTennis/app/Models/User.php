@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -59,10 +60,17 @@ class User extends Authenticatable
      */
     public function initials(): string
     {
-        return Str::of($this->name)
+        return Str::of($this->nombres . ' ' . $this->apellidos)
             ->explode(' ')
             ->take(2)
             ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    /*** Metodo para buscar usuarios por nombre o email */
+    public function scopeBuscar($query, $valor)
+    {
+        return $query->where('nombres', 'LIKE', "%$valor%")
+            ->orWhere('email', 'LIKE', "%$valor%");
     }
 }
