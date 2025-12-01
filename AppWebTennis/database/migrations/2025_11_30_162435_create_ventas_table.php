@@ -11,11 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_ventas', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+
             $table->integer('cantidad')->default(1);
             $table->decimal('precio_unitario', 10, 2)->default(0);
-            $table->decimal('subtotal', 12, 2)->default(0);
+            $table->decimal('total', 12, 2)->default(0);
+            $table->dateTime('fecha_venta')->nullable();
+            $table->string('metodo_pago')->nullable();
+
+            // Relacion con ventas
+            $table->unsignedBigInteger('venta_id');
+            $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -25,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_ventas');
+        Schema::dropIfExists('ventas');
     }
 };

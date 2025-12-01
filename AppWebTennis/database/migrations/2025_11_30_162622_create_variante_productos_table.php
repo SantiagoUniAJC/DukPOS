@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variante_productos', function (Blueprint $table) {
+        // Nota: el modelo `VarianteProducto` usa el nombre de tabla `variante_producto`.
+        Schema::create('variante_producto', function (Blueprint $table) {
             $table->id();
+            $table->string('talla')->nullable();
+            $table->string('color')->nullable();
+            $table->string('codigo_barras')->nullable()->unique();
+            $table->decimal('precio_costo', 10, 2)->default(0);
+            $table->decimal('precio_venta', 10, 2)->default(0);
+            $table->integer('stock')->default(0);
+            $table->string('imagen_url')->nullable();
+            $table->string('estado')->default('activo');
             $table->timestamps();
         });
     }
@@ -22,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variante_productos');
+        Schema::dropIfExists('variante_producto');
     }
 };

@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('orden_compras', function (Blueprint $table) {
             $table->id();
+            $table->string('numero_orden')->unique();
+            $table->date('fecha')->nullable();
+            $table->decimal('total', 12, 2)->default(0);
+            $table->string('estado')->default('pendiente');
+            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('orden_compras');
     }
 };

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('item_orden_compras', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('cantidad')->default(1);
+            $table->decimal('precio_costo', 10, 2)->default(0);
+            $table->decimal('subtotal', 12, 2)->default(0);
             $table->timestamps();
         });
     }
