@@ -34,3 +34,30 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+Route::middleware(['web'])->group(function () {
+    Volt::route('negocio/categorias', 'negocio.categorias.index')
+        ->name('categorias.index');
+    Volt::route('negocio/categorias/create', 'negocio.categorias.create')
+        ->name('categorias.create');
+    Volt::route('negocio/categorias/edit/{categoria}', 'negocio.categorias.edit')
+        ->name('categorias.edit');
+});
+
+Route::middleware(['web'])->group(function () {
+    Volt::route('negocio/marcas', 'negocio.marcas.index')
+        ->name('marcas.index');
+    Volt::route('negocio/marcas/create', 'negocio.marcas.create')
+        ->name('marcas.create');
+    Volt::route('negocio/marcas/edit/{marca}', 'negocio.marcas.edit')
+        ->name('marcas.edit');
+});
+
+Route::middleware(['web'])->group(function () {
+    Volt::route('negocio/productos', 'negocio.productos.index')
+        ->name('productos.index');
+    Volt::route('negocio/productos/create', 'negocio.productos.create')
+        ->name('productos.create');
+    Volt::route('negocio/productos/edit/{producto}', 'negocio.productos.edit')
+        ->name('productos.edit');
+});

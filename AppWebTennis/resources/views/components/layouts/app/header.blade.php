@@ -16,16 +16,19 @@
                 <flux:navmenu.item href="#">Brand guidelines</flux:navmenu.item>
             </flux:navmenu>
         </flux:dropdown>
+        @can('web')
+            <flux:navbar.item icon="user-group" href="{{ route('productos.index') }}" label="Productos"
+                badge="{{ $totalProductos }}" title="Gestion de Productos">Productos
+            </flux:navbar.item>
 
-        <flux:navbar.item icon="user-group" href="{{ route('dashboard') }}" label="Pacientes" badge="2"
-            title="Gestion de Menu">Menu
-        </flux:navbar.item>
+            <flux:navbar.item icon="user-group" href="{{ route('marcas.index') }}" label="Marcas"
+                badge="{{ $totalMarcas }}" title="Gestion de Marcas">Marcas
+            </flux:navbar.item>
 
-
-        <flux:navbar.item icon="user-group" href="{{ route('dashboard') }}" label="Especialistas" badge="3"
-            title="Gestion de Menu">Menu
-        </flux:navbar.item>
-
+            <flux:navbar.item icon="user-group" href="{{ route('categorias.index') }}" label="Categorias"
+                badge="{{ $totalCategorias }}" title="Gestion de Menu">Categorias
+            </flux:navbar.item>
+        @endcan
         @can('auth')
             <flux:navbar.item icon="users" href="{{ route('index') }}" label="Usuarios" badge="{{ $totalUsers }}"
                 title="Gestion de Usuarios Registrados">Usuarios
@@ -66,7 +69,8 @@
                         </span>
 
                         <div class="grid flex-1 text-start text-sm leading-tight">
-                            <span class="truncate font-semibold">{{ auth()->user()->nombres . ' ' . auth()->user()->apellidos }}</span>
+                            <span
+                                class="truncate font-semibold">{{ auth()->user()->nombres . ' ' . auth()->user()->apellidos }}</span>
                             <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                             <span class="truncate text-xs">{{ auth()->user()->cargo }}</span>
                         </div>

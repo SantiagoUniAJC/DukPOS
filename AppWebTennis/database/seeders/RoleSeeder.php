@@ -24,6 +24,8 @@ class RoleSeeder extends Seeder
         
         // You can assign permissions to roles here if needed
         Permission::create(['name' => 'auth'])->syncRoles([ $roleAdmin, $roleDev ]);
+        Permission::create(['name' => 'web'])->syncRoles([ $roleAdmin, $roleDev, $roleSupervisor ]);
+
         
     }
 }
