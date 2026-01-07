@@ -60,4 +60,19 @@ Route::middleware(['web'])->group(function () {
         ->name('productos.create');
     Volt::route('negocio/productos/edit/{producto}', 'negocio.productos.edit')
         ->name('productos.edit');
+        
+    // Variantes productos    
+    Volt::route('negocio/productos/{producto}/variantes', 'negocio.productos.variantes.index')
+        ->name('productos.variantes.index');
+    Volt::route('negocio/productos/{producto}/variantes/create', 'negocio.productos.variantes.create')
+        ->name('productos.variantes.create');
+});
+
+Route::middleware(['web'])->group(function () {
+    Volt::route('negocio/marcas', 'negocio.marcas.index')
+        ->name('marcas.index');
+    Volt::route('negocio/marcas/create', 'negocio.marcas.create')
+        ->name('marcas.create');
+    Volt::route('negocio/marcas/edit/{marca}', 'negocio.marcas.edit')
+        ->name('marcas.edit');
 });

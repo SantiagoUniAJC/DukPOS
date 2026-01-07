@@ -1,54 +1,44 @@
 <?php
 
 use Livewire\Volt\Component;
+use App\Models\Variante;
 use App\Models\Producto;
-use App\Traits\Buscar;
+use App\Models\Sucursal;
+
 
 new class extends Component {
     
-    use Buscar;
-
     public $search = '';
+    public Producto $producto;
 
     protected $listeners = ['disable'];
 
     public function with(): array
     {
         return [
-            'productos' => Producto::buscar($this->search)
-                ->with('marca')
+            'variantes' => Variante::buscar($this->search, ['sku'])
+                ->where('producto_id', $this->producto->id)
+                ->with('sucursal')
                 ->where('estado', 'activo')
                 ->orderBy('id', 'desc')
                 ->paginate(7),
         ];
-    }
-
-    public function disable($productoId)
-    {
-        if (Producto::where('id', $productoId)->where('estado', 'Inactivo')->exists()) {
-            return redirect()->route('productos.index')->with('danger', 'Producto ya está desactivado');
-        } else {
-
-            Producto::where('id', $productoId)->update(['estado' => 'Inactivo']);
-
-            return redirect()->route('productos.index')->with('success', 'Producto desactivado correctamente');
-        }
     }
 }; ?>
 
 <div class="px-4 sm:px-6 lg:px-8">
     <x-slot name="header">
         <h1 class="text-2xl text-center font-semibold text-gray-900 dark:text-white">
-            {{ __('Lista de Productos Registrados.') }}
+            {{ __('Lista de Variantes Registrados.') }}
         </h1>
         <br>
     </x-slot>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div>
-            <a href="{{ route('productos.create') }}"
+            <a href="{{ route('productos.variantes.create', $producto->id) }}"
                 class="inline-block px-3 py-1.5 bg-green-900 text-white rounded-md hover:bg-green-600 transition">
-                <i class="user-plus"></i> {{ __('Crear Producto') }}
+                <i class="user-plus"></i> {{ __('Crear Variante Producto') }}
             </a>
         </div>
 
@@ -62,32 +52,39 @@ new class extends Component {
         </div>
     </div>
 
-    @if ($productos->count() == 0)
+    @if ($variantes->count() == 0)
         <div class="mt-4">
             <h5>{{ $search }}!</h5>
             <p>No se encontraron registros con los criterios de búsqueda ingresados.</p>
         </div>
     @else
         <div class="w-full mt-4 overflow-x-auto">
-            <x-table :items="$productos" :columns="[
-                'Marca',
-                'Categoria',
+            <x-table :items="$variantes" :columns="[
+                'Codigo',
                 'Nombre',
-                'Descripción',
-                'Imagen',
-                'Fecha de Creación',
+                'Talla',
+                'Color',
+                'codigo de barras',
+                //'descripcion',
+                'precio',
+                'sucursal',
+                'stock',
+                //'Fecha de Creación',
                 //'Estado',
             ]" :fields="[
-                'marca.nombre',
-                'categoria.nombre',
-                'nombre',
-                'descripcion',
-                'imagen',
-                'created_at',
+                'sku',
+                'producto.marca_nombre',
+                'talla',
+                'color',
+                'codigo_barras',
+                //'descripcion',
+                'precio_venta',
+                'sucursal.nombre',
+                'stock',
+                //'created_at',
                 //'estado',
-            ]" :hasActions="true"
-                editRoute="productos.edit"
-                showRoute="productos.variantes.index" />
+            ]" :hasActions="false" editRoute="productos.variantes.edit"
+                 />
         </div>
     @endif
 

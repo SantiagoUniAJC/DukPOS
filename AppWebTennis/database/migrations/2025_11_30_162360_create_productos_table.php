@@ -13,16 +13,9 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('sku')->nullable()->unique();
             $table->string('nombre')->nullable();
             $table->text('descripcion')->nullable();
-            $table->decimal('precio_base', 10, 2)->default(0);
-            $table->decimal('precio_compra', 10, 2)->default(0);
-            $table->decimal('precio_venta', 10, 2)->nullable();
-            $table->integer('stock_minimo')->default(10);
-            $table->integer('stock_actual')->default(0);
             $table->string('imagen')->nullable();
-            $table->string('actualizado_por')->nullable();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
 
             //Relacion con categoria
@@ -31,10 +24,6 @@ return new class extends Migration
             //Relacion con marca
             $table->unsignedBigInteger('marca_id');
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
-            //Relacion con proveedor
-            // $table->unsignedBigInteger('proveedor_id');
-            // $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
-            
 
             $table->timestamps();
         });

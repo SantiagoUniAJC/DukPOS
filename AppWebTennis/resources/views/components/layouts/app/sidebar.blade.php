@@ -52,18 +52,18 @@
             </flux:navlist.group>
         </flux:navlist>
 
-        {{-- Categorias --}}
+        {{-- Sucursales --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Seguimiento a Pendientes" icon="clipboard-list" expandable
+            <flux:navlist.group heading="Sucursales" icon="clipboard-list" expandable
                 :expanded="false">
-                <flux:navlist.item href="#" icon="x-mark">Categorias
+                <flux:navlist.item href="#" icon="x-mark">SubMenu
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="lock-open">SubMenu1</flux:navlist.item>
                 <flux:navlist.item href="#" icon="lock-open">SubMenu2</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
-        {{-- Sucursales --}}
+        {{--  --}}
         <flux:navlist class="w-64" variant="outline">
             <flux:navlist.group heading="Concepto Médico" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="#" icon="magnifying-glass-circle">Sucursal 1</flux:navlist.item>

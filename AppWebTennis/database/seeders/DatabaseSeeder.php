@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             MarcaSeeder::class,
         ]);
 
-        Producto::factory(80)->create();
+        // Producto::factory(80)->create();
     }
 }
