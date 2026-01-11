@@ -24,7 +24,6 @@ new class extends Component {
         return [
             'producto_id' => ['required', 'exists:productos,id'],
             'sucursal_id' => ['required', 'exists:sucursales,id'],
-            'sku' => ['required', 'string', 'min:2', 'unique:variantes,sku'],
             'talla' => ['required', 'string', 'min:1'],
             'color' => ['required', 'string', 'min:1'],
             'codigo_barras' => ['nullable', 'string', 'min:1'],
@@ -49,10 +48,11 @@ new class extends Component {
     {
         $this->validate();
 
+        
+
         $variante = Variante::create([
             'producto_id' => $this->producto_id,
             'sucursal_id' => $this->sucursal_id,
-            'sku' => $this->sku,
             'talla' => $this->talla,
             'color' => $this->color,
             'codigo_barras' => $this->codigo_barras,
@@ -61,10 +61,9 @@ new class extends Component {
             'stock' => $this->stock,
         ]);
 
-        // Reset form fields after creation
-        $this->reset(['producto_id', 'sucursal_id', 'sku', 'talla', 'color', 'codigo_barras', 'precio_costo', 'precio_venta', 'stock']);
-
-        return redirect()->route('productos.variantes.index')->with('success', 'Producto creado exitosamente.');
+        return redirect()
+            ->route('productos.variantes.index', ['producto' => $this->producto_id])
+            ->with('success', 'Producto creado exitosamente.');
     }
 }; ?>
 
@@ -87,8 +86,6 @@ new class extends Component {
                 {{-- Sucursal_id --}}
                 <x-select-field name="sucursal_id" label="Sucursal" model="sucursal_id" :options="$sucursales"
                     placeholder="Seleccione una sucursal" />
-
-                <x-input-field name="sku" label="Código" type="text" model="sku" autocomplete="given-name" />
 
                 <x-input-field name="talla" label="Talla" type="text" model="talla" autocomplete="given-name" />
 

@@ -56,7 +56,8 @@
         <flux:navlist class="w-64" variant="outline">
             <flux:navlist.group heading="Sucursales" icon="clipboard-list" expandable
                 :expanded="false">
-                <flux:navlist.item href="#" icon="x-mark">SubMenu
+                <flux:navlist.item href="{{ route('negocio.sucursales.index') }}" icon="x-mark">
+                    Gestionar Sucursales
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="lock-open">SubMenu1</flux:navlist.item>
                 <flux:navlist.item href="#" icon="lock-open">SubMenu2</flux:navlist.item>

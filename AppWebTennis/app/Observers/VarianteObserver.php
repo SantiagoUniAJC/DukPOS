@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Observers;
+
+use App\Models\Variante;
+
+class VarianteObserver
+{
+
+    // Método para abreviar la marca/modelo a 2 letras
+    private function abreviarMarca(string $marca): string
+    {
+        $marca = preg_replace('/[^A-Z]/', '', $marca);
+        return substr($marca, 0, 2) ?: 'XX';
+    }
+
+    // Método para abreviar color a 1 letra según catálogo
+    private function abreviarColor(string $color): string
+    {
+        $mapaColores = [
+            'NEGRO' => 'N',
+            'BLANCO' => 'B',
+            'MARRÓN' => 'M',
+            'MARRON' => 'M',
+            'AZUL' => 'A',
+            'ROJO' => 'R',
+            'GRIS' => 'G',
+            'VERDE' => 'V',
+        ];
+
+        return $mapaColores[$color] ?? 'X';
+    }
+
+
+    /**
+     * Creating a new Variante observer instance.
+     * el codigo esta compuesto por marca-talla-color
+     */
+    public function creating(Variante $variante): void
+    {
+        // abreviatura de marca (2 letras)
+        $marca = strtoupper($variante->producto->marca->nombre ?? 'XX');
+        $prefijoMarca = $this->abreviarMarca($marca);
+
+        // 2. Obtener talla tal cual
+        $talla = $variante->talla;
+
+        // 3. Obtener abreviatura de color (1 letra)
+        $color = strtoupper($variante->color ?? 'X');
+        $prefijoColor = $this->abreviarColor($color);
+
+        // 4. Construir código concatenando
+        $sku = $prefijoMarca . $talla . $prefijoColor;
+
+        // 5. Asignar al modelo
+        $variante->sku = $sku;
+    }
+
+    /**
+     * Handle the Variante "created" event.
+     */
+    public function created(Variante $variante): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Variante "updated" event.
+     */
+    public function updated(Variante $variante): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Variante "deleted" event.
+     */
+    public function deleted(Variante $variante): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Variante "restored" event.
+     */
+    public function restored(Variante $variante): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Variante "force deleted" event.
+     */
+    public function forceDeleted(Variante $variante): void
+    {
+        //
+    }
+}

@@ -7,6 +7,10 @@ use App\Models\User;
 use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Producto;
+use App\Models\Sucursal;
+use App\Observers\SucursalObserver;
+use App\Models\Variante;
+use App\Observers\VarianteObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -46,5 +50,12 @@ class AppServiceProvider extends ServiceProvider
             $totalProductos = Producto::count();
             $view->with('totalProductos', $totalProductos);
         });
+
+        /** Observer para crear el código único de la sucursal */
+        Sucursal::observe(SucursalObserver::class);
+
+        /** Observer para crear el código único de variante producto */
+        Variante::observe(VarianteObserver::class);
+
     }
 }

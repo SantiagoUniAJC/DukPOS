@@ -18,7 +18,6 @@ class Variante extends Model
         'codigo_barras',
         'descripcion',
         'precio',
-        'sucursal',
         'stock',
         'producto_id',
         'sucursal_id',
