@@ -8,8 +8,8 @@
 
         {{-- Clientes --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Clientes" icon="clipboard-list" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('dashboard') }}" badge="" icon="magnifying-glass-circle">
+            <flux:navlist.group heading="Clientes" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
+                <flux:navlist.item href="{{ route('dashboard') }}" icon="magnifying-glass-circle">
                     Crear
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="pencil-square">SubMenu1</flux:navlist.item>
@@ -18,7 +18,7 @@
 
         {{-- Proveedores --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Proveedores" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Proveedores" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="{{ route('dashboard') }}" badge="" icon="magnifying-glass-circle">
                     Crear
                 </flux:navlist.item>
@@ -28,7 +28,7 @@
 
         {{-- Ventas --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Ventas" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Ventas" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="{{ route('dashboard') }}" icon="magnifying-glass-circle">SubMenu1
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="pencil-square">SubMenu1</flux:navlist.item>
@@ -37,36 +37,40 @@
 
         {{-- Inventario --}}
         <flux:navlist class="w-64 mt-2" variant="outline">
-            <flux:navlist.group heading="Inventario" icon="calendar" expandable :expanded="false">
+            <flux:navlist.group heading="Inventario" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="calendar" expandable :expanded="false">
                 <flux:navlist.item href="{{ route('dashboard') }}" icon="calendar">SubMenu1
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="clock">SubMenu1</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
-        {{-- Productos --}}
-        <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Nueva Venta o Servicio" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('dashboard') }}" icon="credit-card">Productos
-                </flux:navlist.item>
-            </flux:navlist.group>
-        </flux:navlist>
+        {{-- Catálogo --}}
+        @can('web')
+            <flux:navlist class="w-64">
+                <flux:navlist.group heading="Catálogo" expandable :expanded="false">
+                    <flux:navlist.item href="{{ route('productos.index') }}" icon="cube" badge="{{ $totalProductos }}" badge:color="lime">Productos
+                    </flux:navlist.item>
+                    <flux:navlist.item href="{{ route('marcas.index') }}" icon="tag" badge="{{ $totalMarcas }}" badge:color="lime">Marcas
+                    </flux:navlist.item>
+                    <flux:navlist.item href="{{ route('categorias.index') }}" icon="cube" badge="{{ $totalCategorias }}" badge:color="lime">Categorías
+                    </flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+        @endcan
 
         {{-- Sucursales --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Sucursales" icon="clipboard-list" expandable
-                :expanded="false">
-                <flux:navlist.item href="{{ route('negocio.sucursales.index') }}" icon="x-mark">
+            <flux:navlist.group heading="Sucursales" icon="clipboard-list" expandable :expanded="false">
+                <flux:navlist.item href="{{ route('negocio.sucursales.index') }}" icon="building-storefront" badge="{{ $totalSucursales }}" badge:color="lime">
                     Gestionar Sucursales
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="lock-open">SubMenu1</flux:navlist.item>
-                <flux:navlist.item href="#" icon="lock-open">SubMenu2</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
         {{--  --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Concepto Médico" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Pendiente" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="#" icon="magnifying-glass-circle">Sucursal 1</flux:navlist.item>
                 <flux:navlist.item href="#" icon="pencil-square">Sucursal 2</flux:navlist.item>
                 <flux:navlist.item href="#" icon="presentation-chart-line">Sucursal 3
@@ -76,7 +80,7 @@
 
         {{-- Facturacion --}}
         <flux:navlist class="w-64 rounded-lg" variant="outline">
-            <flux:navlist.group heading="Orden de Servicio" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Orden de Servicio" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="{{ route('dashboard') }}" icon="magnifying-glass-circle" badge="">
                     Consultar
                 </flux:navlist.item>
@@ -90,7 +94,7 @@
         {{-- Envios & Entregaso --}}
         <flux:navlist class=" w-64
             " variant="outline">
-            <flux:navlist.group heading="Envios & Entregas" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Envios & Entregas" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="#" icon="magnifying-glass-circle">Entrega de Certificados
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="pencil-square">Historial de Envios
@@ -101,7 +105,7 @@
 
         {{-- Informes & Reportes --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Informes & Reportes" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Informes & Reportes" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="#" icon="magnifying-glass-circle">Clientes</flux:navlist.item>
                 <flux:navlist.item href="#" icon="pencil-square">Administrativos</flux:navlist.item>
                 <flux:navlist.item href="#" icon="presentation-chart-line">Ventas</flux:navlist.item>
@@ -110,27 +114,20 @@
 
         {{-- Formatos --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Formatos" icon="clipboard-list" expandable :expanded="false">
+            <flux:navlist.group heading="Formatos" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="clipboard-list" expandable :expanded="false">
                 <flux:navlist.item href="#" icon="magnifying-glass-circle">Descargas</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
-        {{-- Auditoria --}}
-        <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Auditoria" icon="clipboard-list" expandable :expanded="false">
-                <flux:navlist.item href="#" icon="magnifying-glass-circle">Ordenes de Servicio
-                </flux:navlist.item>
-                <flux:navlist.item href="#" icon="pencil-square">Ventas</flux:navlist.item>
-            </flux:navlist.group>
-        </flux:navlist>
-
-        {{-- SEGURIDAD & SALUD EN EL TRABAJO --}}
-        <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Seguridad & Salud T" icon="clipboard-list" expandable
-                :expanded="false">
-                <flux:navlist.item href="#" icon="magnifying-glass-circle">Consultar</flux:navlist.item>
-            </flux:navlist.group>
-        </flux:navlist>
+        {{-- Usuarios --}}
+        @can('auth')
+            <flux:navlist class="w-64">
+                <flux:navlist.group heading="Administración" expandable :expanded="false">
+                    <flux:navlist.item href="{{ route('auth.index') }}" icon="users" badge="{{ $totalUsers }}" badge:color="lime">
+                        Usuarios</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+        @endcan
 
         <flux:spacer />
 

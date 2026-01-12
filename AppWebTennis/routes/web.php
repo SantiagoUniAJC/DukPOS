@@ -16,9 +16,9 @@ Route::get('dashboard', DashboardController::class)
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
-    Volt::route('index', 'auth/index')->name('index');
-    Volt::route('create', 'auth/create')->name('create');
-    Volt::route('edit/{user}', 'auth/edit')->name('edit');
+    Volt::route('auth.index', 'auth/index')->name('auth.index');
+    Volt::route('auth.create', 'auth/create')->name('auth.create');
+    Volt::route('auth.edit/{user}', 'auth/edit')->name('auth.edit');
     Volt::route('settings/profile', 'settings.profile')->name('profile.edit');
     Volt::route('settings/password', 'settings.password')->name('user-password.edit');
     Volt::route('settings/appearance', 'settings.appearance')->name('appearance.edit');

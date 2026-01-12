@@ -65,7 +65,7 @@ new class extends Component {
 
         $this->user->roles()->sync($this->selectedRoles);
 
-        return redirect()->route('index')->with('success', 'Usuario actualizado exitosamente');
+        return redirect()->route('auth.index')->with('success', 'Usuario actualizado exitosamente');
     }
 
     public function render(): mixed
@@ -118,7 +118,7 @@ new class extends Component {
             </flux:button>
 
             {{-- generar boton para regresar a la lista de usuarios --}}
-            <a class="button-blue" href="{{ route('index') }}">Regresar</a>
+            <a class="button-blue" href="{{ route('auth.index') }}">Regresar</a>
         </div>
     </form>
 </div>

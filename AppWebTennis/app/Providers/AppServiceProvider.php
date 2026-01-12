@@ -27,28 +27,34 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Muestra el total de usuarios en el header
-        view()->composer('components.layouts.app.header', function ($view) {
+        // Muestra el total de usuarios en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalUsers = User::count();
             $view->with('totalUsers', $totalUsers);
         });
 
-        // Muestra el total de categorias en el header
-        view()->composer('components.layouts.app.header', function ($view) {
+        // Muestra el total de categorias en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalCategorias = Categoria::count();
             $view->with('totalCategorias', $totalCategorias);
         });
 
-        // Muestra el total de marcas en el header
-        view()->composer('components.layouts.app.header', function ($view) {
+        // Muestra el total de marcas en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalMarcas = Marca::count();
             $view->with('totalMarcas', $totalMarcas);
         });
 
-        // Muestra el total de productos en el header
-        view()->composer('components.layouts.app.header', function ($view) {
+        // Muestra el total de productos en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalProductos = Producto::count();
             $view->with('totalProductos', $totalProductos);
+        });
+
+        // Muestra el total de sucursales en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
+            $totalSucursales = Sucursal::count();
+            $view->with('totalSucursales', $totalSucursales);
         });
 
         /** Observer para crear el código único de la sucursal */

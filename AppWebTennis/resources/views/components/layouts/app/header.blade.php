@@ -1,61 +1,35 @@
-<flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+<flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
+    <flux:sidebar.toggle class="lg:hidden" icon="bars-2" />
 
     <flux:navbar class="-mb-px max-lg:hidden">
-        <flux:navbar.item icon="home" href="#" current>AdminPanel</flux:navbar.item>
-        <flux:navbar.item icon="inbox" badge="12" href="{{ route('dashboard') }}">Buzon de Correo
-        </flux:navbar.item>
-        <flux:navbar.item icon="calendar" href="{{ route('dashboard') }}" badge="4">
-            Calendario</flux:navbar.item>
+        <flux:navbar.item icon="home" href="#" current>Home</flux:navbar.item>
+        <flux:navbar.item icon="inbox" badge="12" href="#">Inbox</flux:navbar.item>
+        <flux:navbar.item icon="document-text" href="#">Documents</flux:navbar.item>
+        <flux:navbar.item icon="calendar" href="#">Calendar</flux:navbar.item>
+
         <flux:separator vertical variant="subtle" class="my-2" />
 
         <flux:dropdown class="max-lg:hidden">
-            <flux:navbar.item icon:trailing="chevron-down">Favoritos</flux:navbar.item>
+            <flux:navbar.item icon:trailing="chevron-down">Favorites</flux:navbar.item>
+
             <flux:navmenu>
                 <flux:navmenu.item href="#">Marketing site</flux:navmenu.item>
                 <flux:navmenu.item href="#">Android app</flux:navmenu.item>
                 <flux:navmenu.item href="#">Brand guidelines</flux:navmenu.item>
             </flux:navmenu>
         </flux:dropdown>
-        @can('web')
-            <flux:navbar.item icon="user-group" href="{{ route('productos.index') }}" label="Productos"
-                badge="{{ $totalProductos }}" title="Gestion de Productos">Productos
-            </flux:navbar.item>
-
-            <flux:navbar.item icon="user-group" href="{{ route('marcas.index') }}" label="Marcas"
-                badge="{{ $totalMarcas }}" title="Gestion de Marcas">Marcas
-            </flux:navbar.item>
-
-            <flux:navbar.item icon="user-group" href="{{ route('categorias.index') }}" label="Categorias"
-                badge="{{ $totalCategorias }}" title="Gestion de Menu">Categorias
-            </flux:navbar.item>
-        @endcan
-        @can('auth')
-            <flux:navbar.item icon="users" href="{{ route('index') }}" label="Usuarios" badge="{{ $totalUsers }}"
-                title="Gestion de Usuarios Registrados">Usuarios
-            </flux:navbar.item>
-        @endcan
     </flux:navbar>
 
+    <flux:spacer />
 
-    {{-- Buscar, Ayuda, Documentacion --}}
-    <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
-        {{-- Busqueda --}}
-        <flux:tooltip :content="__('Search')" position="bottom">
-            <flux:navbar.item icon="magnifying-glass" href="#" label="Search" />
-        </flux:tooltip>
-
-        <flux:tooltip :content="__('Help')" position="bottom">
-            <flux:navbar.item class="!h-10 max-lg:hidden [&>div>svg]:size-5" icon="information-circle" href="#"
-                :label="__('Help')" />
-        </flux:tooltip>
-        <flux:tooltip :content="__('Documentation')" position="bottom">
-            <flux:navbar.item class="h-10 max-lg:hidden [&>div>svg]:size-5" icon="book-open-text" href="#"
-                target="_blank" label="Documentation" />
-        </flux:tooltip>
+    <flux:navbar class="me-4">
+        <livewire:header.search />
+        <flux:navbar.item class="max-lg:hidden" icon="cog-6-tooth" href="#" label="Settings" />
+        <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help" />
     </flux:navbar>
 
     {{-- Menu de Usuario --}}
-    <flux:dropdown class="max-lg:hidden" position="top" align="end">
+    <flux:dropdown position="top" align="start">
         <flux:profile class="cursor-pointer" :initials="auth()->user()->initials()" />
 
         <flux:menu>

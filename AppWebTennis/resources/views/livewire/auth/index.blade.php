@@ -33,7 +33,7 @@ new class extends Component {
 
         User::where('id', $userId)->update(['estado' => 'Inactivo']);
 
-        return redirect()->route('index')->with('success', 'Usuario desactivado');
+        return redirect()->route('auth.index')->with('success', 'Usuario desactivado');
     }
 };
 ?>
@@ -48,7 +48,7 @@ new class extends Component {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div>
-            <a href="{{ route('create') }}"
+            <a href="{{ route('auth.create') }}"
                 class="inline-block px-3 py-1.5 bg-green-900 text-white rounded-md hover:bg-green-600 transition">
                 <i class="user-plus"></i> {{ __('Nuevo Usuario') }}
             </a>
@@ -86,7 +86,7 @@ new class extends Component {
                 // 'role' => fn($user) => $user->roles->pluck('name')->join(', ') ?: 'Sin Rol Asignado',
                 // 'estado',
             ]" :hasActions="true"
-                editRoute="edit" />
+                editRoute="auth.edit" />
         </div>
     @endif
 
