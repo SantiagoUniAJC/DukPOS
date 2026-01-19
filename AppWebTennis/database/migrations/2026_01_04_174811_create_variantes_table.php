@@ -16,17 +16,14 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->string('talla', 20)->nullable();
             $table->string('color', 30)->nullable();
-            $table->string('codigo_barras')->unique();
+            $table->string('codigo_barras', 20)->unique();
             $table->decimal('precio_costo', 10, 2)->default(0);
             $table->decimal('precio_venta', 10, 2)->default(0);
-            $table->integer('stock')->default(0);
-            $table->string('estado')->default('activo');
-            
+
             $table->unsignedBigInteger('producto_id');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
 
-            $table->unsignedBigInteger('sucursal_id');
-            $table->foreign('sucursal_id')->references('id')->on('sucursales')->onDelete('cascade');
+            $table->string('estado')->default('activo');
             $table->timestamps();
         });
     }

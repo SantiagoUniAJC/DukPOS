@@ -21,6 +21,10 @@ class Producto extends Model
         'estado',
     ];
 
+    /* =========================
+     * Relaciones
+     * ========================= */
+
     public function marca()
     {
         return $this->belongsTo(Marca::class);
@@ -31,9 +35,19 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function getMarcaNombreAttribute()
+    public function variante()
     {
-        return "{$this->marca->nombre} {$this->nombre}";
+        return $this->hasMany(Variante::class);
     }
 
+    /**
+     * Accessor.
+     */
+
+    public function getMarcaNombreAttribute()
+    {
+        return trim(
+            optional($this->marca)->nombre . ' ' . $this->nombre
+        );
+    }
 }

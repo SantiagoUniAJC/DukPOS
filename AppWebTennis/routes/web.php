@@ -76,4 +76,10 @@ Route::middleware(['web'])->group(function () {
         ->name('negocio.sucursales.create');
     Volt::route('negocio/sucursales/edit/{sucursal}', 'negocio.sucursales.edit')
         ->name('negocio.sucursales.edit');
+
+    // Inventario    
+    Volt::route('negocio/inventario', 'negocio.inventario.index')
+        ->name('negocio.inventario.index');
+    Volt::route('negocio/inventario/create', 'negocio.inventario.create')
+        ->name('negocio.inventario.create');
 });

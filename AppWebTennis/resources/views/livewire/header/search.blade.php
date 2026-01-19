@@ -20,7 +20,7 @@
                             <div class="text-xs text-zinc-500">
                                 <p>Referencia: {{ $variante->producto->nombre }}
                                     Talla: {{ $variante->talla }}
-                                    Stock: {{ $variante->stock }}
+                                    Stock: {{ $variante->inventario->stock_actual }}
                                     Sucursal: {{ $variante->sucursal->nombre }}</p>
                             </div>
                         </a>

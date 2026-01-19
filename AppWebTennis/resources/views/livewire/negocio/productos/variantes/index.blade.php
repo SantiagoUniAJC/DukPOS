@@ -16,7 +16,6 @@ new class extends Component {
         return [
             'variantes' => Variante::buscar($this->search, ['sku'])
                 ->where('producto_id', $this->producto->id)
-                ->with('sucursal')
                 ->where('estado', 'activo')
                 ->orderBy('id', 'desc')
                 ->paginate(7),
@@ -76,8 +75,7 @@ new class extends Component {
                 'codigo de barras',
                 //'descripcion',
                 'precio',
-                'sucursal',
-                'stock',
+                // 'Stock',
                 //'Fecha de Creación',
                 //'Estado',
             ]" :fields="[
@@ -88,8 +86,7 @@ new class extends Component {
                 'codigo_barras',
                 //'descripcion',
                 'precio_venta',
-                'sucursal.nombre',
-                'stock',
+                // 'inventario.stock_actual',
                 //'created_at',
                 //'estado',
             ]" :hasActions="true"

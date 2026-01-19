@@ -37,8 +37,8 @@
 
         {{-- Inventario --}}
         <flux:navlist class="w-64 mt-2" variant="outline">
-            <flux:navlist.group heading="Inventario" class="[&>button]:text-red-500 [&>button]:font-semibold" icon="calendar" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('dashboard') }}" icon="calendar">SubMenu1
+            <flux:navlist.group heading="Inventario" icon="calendar" expandable :expanded="false">
+                <flux:navlist.item href="{{ route('negocio.inventario.create') }}" icon="plus">Ingresar Productos
                 </flux:navlist.item>
                 <flux:navlist.item href="#" icon="clock">SubMenu1</flux:navlist.item>
             </flux:navlist.group>

@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventarios', function (Blueprint $table) {
+        Schema::create('inventario_sucursales', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sucursal_id')->constrained('sucursales')->cascadeOnDelete();
+            $table->foreignId('variante_id')->constrained('variantes')->cascadeOnDelete();
             $table->integer('stock_actual')->default(0);
             $table->integer('stock_minimo')->default(0);
-
-            $table->unsignedBigInteger('variante_id');
-            $table->foreign('variante_id')->references('id')->on('variantes')->onDelete('cascade');
-
-            $table->unsignedBigInteger('sucursal_id');
-            $table->foreign('sucursal_id')->references('id')->on('sucursales')->onDelete('cascade');
-
             $table->timestamps();
+            $table->unique(['sucursal_id', 'variante_id']);
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventarios');
+        Schema::dropIfExists('inventario_sucursales');
     }
 };

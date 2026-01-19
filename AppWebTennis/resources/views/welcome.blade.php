@@ -82,9 +82,9 @@
                                 </span>
                             </span>
                             <span class="text-[#706f6c] dark:text-[#5df076]">
-                                <marquee loop="3">
-                                    Funcionalidad 3: Gestión de Productos: Permitir a los usuarios agregar, editar, eliminar y ver productos disponibles en el almacén de tenis.
-                                </marquee>
+                               
+                                    Funcionalidad 3: Catalogo: Permitir la gestion de Productos, Marcas, Categorias, disponibles en el almacén de tenis.
+                               
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
@@ -95,7 +95,9 @@
                                 </span>
                             </span>
                             <span class="text-[#706f6c] dark:text-[#5df076]">
-                                Funcionalidad 4: 
+                                 
+                                    Funcionalidad 4: Variantes de Productos: Gestionar las diferentes tallas y colores de los tenis disponibles. 
+                                 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
@@ -106,7 +108,7 @@
                                 </span>
                             </span>
                             <span class="text-[#706f6c] dark:text-[#5df076]">
-                                Funcionalidad 5: 
+                                Funcionalidad 5: Gestion de Sucursales: Permitir la administracion de multiples sucursales. 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
@@ -117,7 +119,9 @@
                                 </span>
                             </span>
                             <span>
-                                 Funcionalidad 6: 
+                                <marquee loop="3">
+                                 Funcionalidad 6: Gestión de Inventario: Controlar el stock de productos en cada sucursal.
+                                 </marquee> 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">

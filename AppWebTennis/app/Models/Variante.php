@@ -17,20 +17,28 @@ class Variante extends Model
         'color',
         'codigo_barras',
         'descripcion',
-        'precio',
-        'stock',
+        'precio_costo',
+        'precio_venta',
         'producto_id',
-        'sucursal_id',
         'estado',
     ];
+
+    /* =========================
+     * Relaciones
+     * ========================= */
 
     public function producto()
     {
         return $this->belongsTo(Producto::class);
     }
 
-    public function sucursal()
+    public function inventarios()
     {
-        return $this->belongsTo(Sucursal::class);
+        return $this->hasMany(Inventario::class);
+    }
+
+    public function inventarioSucursales()
+    {
+        return $this->hasMany(InventarioSucursal::class);
     }
 }

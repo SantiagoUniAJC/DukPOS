@@ -20,6 +20,10 @@ class Sucursal extends Model
         'user_id',
     ];
 
+    /* =========================
+     * Relaciones
+     * ========================= */
+
     public function usuario()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -27,11 +31,11 @@ class Sucursal extends Model
 
     public function inventario()
     {
-        return $this->belongsTo(Inventario::class);
+        return $this->hasMany(Inventario::class);
     }
 
-    // public function ventas()
-    // {
-    //     return $this->hasMany(Venta::class, 'venta_id');
-    // }
+    public function inventarioSucursales()
+    {
+        return $this->hasMany(InventarioSucursal::class);
+    }
 }

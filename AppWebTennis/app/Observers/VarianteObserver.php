@@ -31,6 +31,19 @@ class VarianteObserver
         return $mapaColores[$color] ?? 'X';
     }
 
+    /**
+     * Codigo de barras generado automaticamente al crear la variante
+     */
+    private function generarCodigoBarras(): string
+    {
+        return str_pad(
+            now()->format('YmdHis') . rand(0, 9),
+            13,
+            '0',
+            STR_PAD_RIGHT
+        );
+    }
+
 
     /**
      * Creating a new Variante observer instance.
@@ -54,7 +67,19 @@ class VarianteObserver
 
         // 5. Asignar al modelo
         $variante->sku = $sku;
+
+        // Generar código de barras si no está establecido
+        if (empty($variante->codigo_barras)) {
+            $variante->codigo_barras = $this->generarCodigoBarras();
+        }
     }
+
+
+
+
+
+
+
 
     /**
      * Handle the Variante "created" event.

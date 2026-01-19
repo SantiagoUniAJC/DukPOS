@@ -4,19 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inventario extends Model
+class InventarioSucursal extends Model
 {
+    protected $table = 'inventario_sucursales';
+
     protected $fillable = [
-        'variante_id',
         'sucursal_id',
+        'variante_id',
         'stock_actual',
         'stock_minimo',
-        'estado',
     ];
-
-    /* =========================
-     * Relaciones
-     * ========================= */
 
     public function sucursal()
     {
