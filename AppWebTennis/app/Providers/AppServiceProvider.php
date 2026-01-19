@@ -11,6 +11,7 @@ use App\Models\Sucursal;
 use App\Observers\SucursalObserver;
 use App\Models\Variante;
 use App\Observers\VarianteObserver;
+use App\Models\Inventario;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -55,6 +56,12 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalSucursales = Sucursal::count();
             $view->with('totalSucursales', $totalSucursales);
+        });
+
+        // Muestra el total de Inventario en el dashboard
+        view()->composer('dashboard', function ($view) {
+            $inventarioTotal = Inventario::sum('stock_actual');
+            $view->with('inventarioTotal', $inventarioTotal);
         });
 
         /** Observer para crear el código único de la sucursal */

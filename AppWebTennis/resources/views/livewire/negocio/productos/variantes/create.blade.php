@@ -13,9 +13,13 @@ new class extends Component {
 
     public $sku, $talla, $color, $codigo_barras, $precio_costo, $precio_venta;
 
-    public function mount(): void
+    public function mount(Producto $producto): void
     {
-        $this->productos = Producto::pluck('nombre', 'id')->toArray();
+        $this->producto_id = $producto->id;
+
+        $this->productos = [
+            $producto->id => $producto->nombre,
+        ];
         $this->sucursales = Sucursal::pluck('nombre', 'id')->toArray();
     }
 
@@ -43,9 +47,7 @@ new class extends Component {
 
     public function createVariante()
     {
-        $this->validate();
-
-        
+        $this->validate();  
 
         $variante = Variante::create([
             'producto_id' => $this->producto_id,
@@ -57,7 +59,7 @@ new class extends Component {
 
         return redirect()
             ->route('productos.variantes.index', ['producto' => $this->producto_id])
-            ->with('success', 'Producto creado exitosamente.');
+            ->with('success', 'Producto creado exitosamente. Recuerda agregar inventario a la variante.');
     }
 }; ?>
 

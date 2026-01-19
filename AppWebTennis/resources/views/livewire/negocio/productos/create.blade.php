@@ -64,7 +64,7 @@ new class extends Component {
             'imagen' => $nombreImagen,
         ]);
 
-         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
+         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente. Recuerde agregar variantes al producto.');
     }
 }; ?>
 

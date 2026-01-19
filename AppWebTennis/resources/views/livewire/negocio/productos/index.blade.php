@@ -15,11 +15,12 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'productos' => Producto::buscar($this->search)
+            'productos' => Producto::buscar($this->search, ['nombre', 'marca.nombre'])
                 ->with('marca')
+                ->withCount('variante')
                 ->where('estado', 'activo')
                 ->orderBy('id', 'desc')
-                ->paginate(7),
+                ->paginate(5),
         ];
     }
 
@@ -75,6 +76,8 @@ new class extends Component {
                 'Nombre',
                 'Descripción',
                 'Imagen',
+                'Variantes',
+                'Inventario',
                 'Fecha de Creación',
                 //'Estado',
             ]" :fields="[
@@ -83,6 +86,8 @@ new class extends Component {
                 'nombre',
                 'descripcion',
                 'imagen',
+                'variante_count',
+                'producto_inventario_count',
                 'created_at',
                 //'estado',
             ]" :hasActions="true"

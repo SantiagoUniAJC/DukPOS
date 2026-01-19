@@ -9,7 +9,16 @@ trait Buscar
     {
         return $query->where(function ($q) use ($valor, $columnas) {
             foreach ($columnas as $columna) {
-                $q->orWhere($columna, 'LIKE', "%{$valor}%");
+                // Si la columna contiene ".", significa relación
+                if (str_contains($columna, '.')) {
+                    [$relacion, $campo] = explode('.', $columna);
+
+                    $q->orWhereHas($relacion, function ($q2) use ($campo, $valor) {
+                        $q2->where($campo, 'LIKE', "%{$valor}%");
+                    });
+                } else {
+                    $q->orWhere($columna, 'LIKE', "%{$valor}%");
+                }
             }
         });
     }

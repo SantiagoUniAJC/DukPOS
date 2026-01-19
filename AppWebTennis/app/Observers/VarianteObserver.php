@@ -8,10 +8,12 @@ class VarianteObserver
 {
 
     // Método para abreviar la marca/modelo a 2 letras
-    private function abreviarMarca(string $marca): string
+    private function abreviarMarca(string $marca, String $producto): string
     {
         $marca = preg_replace('/[^A-Z]/', '', $marca);
-        return substr($marca, 0, 2) ?: 'XX';
+        $producto = preg_replace('/[^A-Z]/', '', $producto);
+        return (substr($marca, 0, 2) ?: 'XX') . 
+                (substr($producto, 0, 2) ?: 'XX');
     }
 
     // Método para abreviar color a 1 letra según catálogo
@@ -53,7 +55,8 @@ class VarianteObserver
     {
         // abreviatura de marca (2 letras)
         $marca = strtoupper($variante->producto->marca->nombre ?? 'XX');
-        $prefijoMarca = $this->abreviarMarca($marca);
+        $producto = strtoupper($variante->producto->nombre ?? 'XX');
+        $prefijoMarca = $this->abreviarMarca($marca, $producto);
 
         // 2. Obtener talla tal cual
         $talla = $variante->talla;
@@ -73,13 +76,6 @@ class VarianteObserver
             $variante->codigo_barras = $this->generarCodigoBarras();
         }
     }
-
-
-
-
-
-
-
 
     /**
      * Handle the Variante "created" event.
