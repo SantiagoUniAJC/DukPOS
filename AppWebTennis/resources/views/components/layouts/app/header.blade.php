@@ -23,7 +23,7 @@
     <flux:spacer />
 
     <flux:navbar class="me-4">
-        <livewire:header.search />
+        <livewire:header.search/>
         <flux:navbar.item class="max-lg:hidden" icon="cog-6-tooth" href="#" label="Settings" />
         <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help" />
     </flux:navbar>

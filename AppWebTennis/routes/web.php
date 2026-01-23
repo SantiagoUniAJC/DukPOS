@@ -82,4 +82,12 @@ Route::middleware(['web'])->group(function () {
         ->name('negocio.inventario.index');
     Volt::route('negocio/inventario/create', 'negocio.inventario.create')
         ->name('negocio.inventario.create');
+
+    // Proveedores    
+    Volt::route('negocio/proveedores', 'negocio.proveedores.index')
+        ->name('negocio.proveedores.index');
+    Volt::route('negocio/proveedores/create', 'negocio.proveedores.create')
+        ->name('negocio.proveedores.create');
+    Volt::route('negocio/proveedores/edit/{proveedor}', 'negocio.proveedores.edit')
+        ->name('negocio.proveedores.edit');    
 });

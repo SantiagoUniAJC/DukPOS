@@ -19,12 +19,10 @@
 
         {{-- Proveedores --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Proveedores" class="[&>button]:text-red-500 [&>button]:font-semibold"
+            <flux:navlist.group heading="Proveedores" 
                 icon="clipboard-list" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('dashboard') }}" badge="" icon="magnifying-glass-circle">
-                    Crear
-                </flux:navlist.item>
-                <flux:navlist.item href="#" icon="pencil-square">SubMenu1</flux:navlist.item>
+                <flux:navlist.item href="{{ route('negocio.proveedores.index') }}" icon="pencil-square">Ver Proveedores</flux:navlist.item>
+                <flux:navlist.item href="{{ route('negocio.proveedores.create') }}" icon="plus">Crear Proveedor</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 

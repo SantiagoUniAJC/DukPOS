@@ -1,4 +1,4 @@
-<div>
+<div class="max-lg:hidden">
     <flux:navbar.item icon="magnifying-glass" label="Buscar" wire:click="$set('isOpen', true)" />
 
     <flux:modal wire:model="isOpen" class="md:w-96">
@@ -20,8 +20,8 @@
                             <div class="text-xs text-zinc-500">
                                 <p>Referencia: {{ $variante->producto->nombre }}
                                     Talla: {{ $variante->talla }}
-                                    Stock: {{ $variante->inventario->stock_actual }}
-                                    Sucursal: {{ $variante->sucursal->nombre }}</p>
+                                    Stock: {{ $variante }}
+                                    Sucursal: </p>
                             </div>
                         </a>
                     @empty

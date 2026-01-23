@@ -13,6 +13,7 @@ new class extends Component {
     public $sucursales = [];
 
     public $stock_actual;
+    public $unidades_ingresar;
 
     public function mount(): void
     {
@@ -41,6 +42,7 @@ new class extends Component {
         return [
             'variante_id' => ['required', 'exists:variantes,id'],
             'sucursal_id' => ['required', 'exists:sucursales,id'],
+            'unidades_ingresar' => ['required', 'integer', 'min:1'],
         ];
     }
 
@@ -50,6 +52,8 @@ new class extends Component {
             '*.required' => 'Este campo es obligatorio.',
             'variante_id.exists' => 'La variante seleccionada no es válida.',
             'sucursal_id.exists' => 'La sucursal seleccionada no es válida.',
+            'unidades_ingresar.integer' => 'Debe ingresar un número entero válido.',
+            'unidades_ingresar.min' => 'Debe ingresar al menos 1 unidad.',
         ];
     }
 
@@ -63,7 +67,7 @@ new class extends Component {
                 'sucursal_id' => $this->sucursal_id,
             ],
             [
-                'stock_actual' => $this->stock_actual,
+                'stock_actual' => $this->stock_actual + $this->unidades_ingresar,
             ]
         );
 
@@ -92,7 +96,8 @@ new class extends Component {
                 <x-select-field name="sucursal_id" label="Sucursal" model="sucursal_id" :options="$sucursales"
                     placeholder="Seleccione una sucursal" />
 
-                <x-input-field name="stock_actual" label="Stock Actual" type="text" model="stock_actual" />
+                <x-input-field name="inventario_actual" label="Inventario Actual" type="text" model="stock_actual" readonly />
+                <x-input-field name="unidades_ingresar" label="Unidades a Ingresar" type="text" model="unidades_ingresar" />
             </div>
             <div class="mt-2 flex justify-center">
                 <flux:button type="submit" variant="primary" wire:loading.attr="disabled">

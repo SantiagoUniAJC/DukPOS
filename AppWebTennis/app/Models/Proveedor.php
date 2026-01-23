@@ -1,20 +1,24 @@
 <?php
 
 namespace App\Models;
+use App\Traits\Buscar;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
+    use Buscar;
+
     protected $table = 'proveedores';
 
     protected $fillable = [
-        'nombre',
+        'razon_social',
+        'nit',
         'direccion',
         'telefono',
         'email',
         'contacto',
-        'responsable',
+        'estado',
     ];
 
     public function ordenes()
