@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('proveedor_id')->constrained('proveedores')->cascadeOnDelete();
             $table->string('nombre')->unique();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->foreignId('creado_por')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('actualizado_por')->nullable()->constrained('users')->nullOnDelete();
+
             $table->timestamps();
         });
     }

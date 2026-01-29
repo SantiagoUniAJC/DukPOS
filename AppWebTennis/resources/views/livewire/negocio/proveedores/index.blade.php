@@ -3,7 +3,6 @@
 use Livewire\Volt\Component;
 use App\Models\Proveedor;
 
-
 new class extends Component {
     public $search = '';
 
@@ -12,7 +11,10 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'proveedores' => Proveedor::buscar($this->search, ['razon_social'])->where('estado', 'activo')->orderBy('id', 'desc')->paginate(7),
+            'proveedores' => Proveedor::buscar($this->search, ['razon_social'])
+                ->where('estado', 'activo')
+                ->orderBy('id', 'desc')
+                ->paginate(7),
         ];
     }
 
@@ -69,7 +71,7 @@ new class extends Component {
                     'Telefono',
                     'Email',
                     'Contacto',
-                    'Estado',
+                    //'Estado',
                     'Fecha de Creación',
                 ]" :fields="[
                     'razon_social',
@@ -78,9 +80,10 @@ new class extends Component {
                     'telefono',
                     'email',
                     'contacto',
-                    'estado',
+                    //'estado',
                     'created_at',
                 ]" :hasActions="true"
+                    createLabel="Comprar" createRoute="negocio.proveedores.compras.create"
                     editRoute="negocio.proveedores.edit" />
             </div>
         @endif

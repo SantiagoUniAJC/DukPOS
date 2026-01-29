@@ -41,4 +41,9 @@ class Variante extends Model
     {
         return $this->hasMany(InventarioSucursal::class);
     }
+
+    public function compraDetalles()
+    {
+        return $this->hasMany(CompraDetalle::class);
+    }
 }

@@ -6,8 +6,10 @@
     'actions' => null,
     'editRoute' => null,
     'createRoute' => null,
+    'createLabel' => 'Crear',
     'showRoute' => null,
-    'agendaRoute' => null,
+    'showLabel' => 'Mostrar',
+    'canConfirm' => null,
 ])
 
 <div class="overflow-x-auto rounded-xl shadow border border-gray-200 dark:border-zinc-700">
@@ -48,8 +50,8 @@
                     {{-- Botón --}}
                     @if ($hasActions ?? false)
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-zinc-800 dark:text-zinc-100">
-                            <x-buttons-actions :item="$item" :editRoute="$editRoute" :agendaRoute="$agendaRoute" :createRoute="$createRoute"
-                                :showRoute="$showRoute" />
+                            <x-buttons-actions :item="$item" :editRoute="$editRoute" :showRoute="$showRoute" :createRoute="$createRoute"
+                                :createLabel="$createLabel" :showLabel="$showLabel" :canConfirm="$canConfirm" />
                         </td>
                     @endif
                 </tr>

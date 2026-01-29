@@ -15,7 +15,11 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'marcas' => Marca::buscar($this->search)->orderBy('id', 'desc')->paginate(7),
+            'marcas' => Marca::buscar($this->search)
+            ->where('estado', 'Activo')
+            ->with('proveedor')
+            ->orderBy('id', 'desc')
+            ->paginate(7),
         ];
     }
 
@@ -66,12 +70,12 @@ new class extends Component {
         <div class="w-full mt-4 overflow-x-auto">
             <x-table :items="$marcas" :columns="[
                 'Nombre',
-                'Descripción',
+                'Proveedor',
                 'Fecha de Creación',
                 'Fecha de Actualización',
                 'Usuario de Actualización',
                 'Estado',
-            ]" :fields="['nombre', 'descripcion', 'created_at', 'updated_at', 'actualizado_por', 'estado']" :hasActions="true" editRoute="marcas.edit" />
+            ]" :fields="['nombre', 'proveedor.razon_social', 'created_at', 'updated_at', 'actualizado_por', 'estado']" :hasActions="true" editRoute="marcas.edit" />
         </div>
     @endif
 

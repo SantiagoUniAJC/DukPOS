@@ -21,8 +21,9 @@ class Proveedor extends Model
         'estado',
     ];
 
-    public function ordenes()
+    public function marca()
     {
-        return $this->hasMany(OrdenCompra::class, 'proveedor_id');
+        return $this->belongsTo(Marca::class);
     }
+
 }

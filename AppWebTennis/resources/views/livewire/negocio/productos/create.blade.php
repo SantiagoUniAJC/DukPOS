@@ -64,13 +64,13 @@ new class extends Component {
             'imagen' => $nombreImagen,
         ]);
 
-         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente. Recuerde agregar variantes al producto.');
+         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
     }
 }; ?>
 
 <div>
     <x-slot name="header">
-        <h1 class="text-6xl font-semibold text-gray-900 dark:text-white text-center">
+        <h1 class="text-2xl font-semibold text-gray-900 dark:text-white text-center">
             {{ __('Formulario de Creación de Productos.') }}
         </h1>
         <flux:separator class="mt-4 mb-4" /><br>

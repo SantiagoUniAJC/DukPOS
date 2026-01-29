@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             DevUserSeeder::class,
             UserSeeder::class,
+            ProveedorSeeder::class,
             CategoriaSeeder::class,
-            MarcaSeeder::class,
+            SucursalSeeder::class,
+            //MarcaSeeder::class,
         ]);
 
         // Producto::factory(80)->create();

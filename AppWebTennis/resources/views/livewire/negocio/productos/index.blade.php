@@ -92,6 +92,7 @@ new class extends Component {
                 //'estado',
             ]" :hasActions="true"
                 editRoute="productos.edit"
+                showLabel="Ver Variantes"
                 showRoute="productos.variantes.index" />
         </div>
     @endif

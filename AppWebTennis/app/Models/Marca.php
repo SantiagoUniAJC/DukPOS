@@ -14,6 +14,7 @@ class Marca extends Model
 
     protected $fillable = [
         'nombre',
+        'proveedor_id',
         'estado',
         'creado_por',
         'actualizado_por',
@@ -27,5 +28,15 @@ class Marca extends Model
     public function actualizado_por()
     {
         return $this->belongsTo(User::class, 'actualizado_por');
+    }
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class, 'proveedor_id');
     }
 }

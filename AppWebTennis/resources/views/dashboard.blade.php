@@ -77,11 +77,30 @@
             @endforeach
         </div>
 
-
-
         <div class="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <h2 class="text-2xl text-gray-500 dark:text-white">Menu</h2>
-            <p class="text-4xl font-bold mt-2 text-green-600">Pendiente definir</p>
+            <h2 class="text-2xl text-center text-gray-500 dark:text-white">Gestion de Inicio del POS</h2>
+            <flux:separator class="mt-2 mb-4" variant="subtle" />
+            <h2 class="text-gray-500 dark:text-white">Modelos que NO dependen de Nada</h2>
+            <ul class="flex flex-col gap-3">
+                <li class="flex items-center gap-2">
+                    <flux:heading>Usuarios - Proveedores - Categorías - Sucursales</flux:heading>
+                </li>
+                <li class="flex items-center gap-2">
+                    <flux:heading>Marcas -> Depende de Proveedor</flux:heading>
+                </li>
+                <li class="flex items-center gap-2">
+                    <flux:heading>Productos -> Depende de Marca & Categoria</flux:heading>
+                </li>
+                <li class="flex items-center gap-2">
+                    <flux:heading>Variantes -> Depende de Productos</flux:heading>
+                </li>
+                <li class="flex items-center gap-2">
+                    <flux:heading>Compras -> Depende de Productos</flux:heading>
+                </li>
+                <li class="flex items-center gap-2">
+                    <flux:heading>Inventario -> Depende de Productos</flux:heading>
+                </li>
+            </ul>
         </div>
 
         <div class="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-neutral-200 dark:border-neutral-700">

@@ -16,11 +16,11 @@ class UserSeeder extends Seeder
         User::create([
             'nombres' => 'Luis Eduardo',
             'apellidos' => 'Gomez Valencia',
-            'cargo' => 'Supervisor',
+            'cargo' => 'Administrador del Sistema',
             'telefono' => '3013716660',
             'email' => 'duk000@hotmail.com',
             'password' => Hash::make('Cambiam3'),
-        ])->assignRole('supervisor');
+        ])->assignRole('desarrollador');
 
         User::create([
             'nombres' => 'Luisa Fernanda',

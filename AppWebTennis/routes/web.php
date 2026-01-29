@@ -89,5 +89,13 @@ Route::middleware(['web'])->group(function () {
     Volt::route('negocio/proveedores/create', 'negocio.proveedores.create')
         ->name('negocio.proveedores.create');
     Volt::route('negocio/proveedores/edit/{proveedor}', 'negocio.proveedores.edit')
-        ->name('negocio.proveedores.edit');    
+        ->name('negocio.proveedores.edit');
+        
+    // Compras    
+    Volt::route('negocio/proveedores/compras', 'negocio.proveedores.compras.index')
+        ->name('negocio.proveedores.compras.index');
+    Volt::route('negocio/proveedores/{proveedor}/compras/create', 'negocio.proveedores.compras.create')
+        ->name('negocio.proveedores.compras.create');
+    Volt::route('negocio/proveedores/{proveedor}/compras/edit/{compra}', 'negocio.proveedores.compras.edit')
+        ->name('negocio.proveedores.compras.edit');
 });

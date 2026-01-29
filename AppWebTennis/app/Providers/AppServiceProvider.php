@@ -12,6 +12,7 @@ use App\Observers\SucursalObserver;
 use App\Models\Variante;
 use App\Observers\VarianteObserver;
 use App\Models\Inventario;
+use App\Models\Proveedor;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('components.layouts.app.sidebar', function ($view) {
             $totalUsers = User::count();
             $view->with('totalUsers', $totalUsers);
+        });
+
+        // Muestra el total de proveedores en el sidebar
+        view()->composer('components.layouts.app.sidebar', function ($view) {
+            $totalProveedores = Proveedor::count();
+            $view->with('totalProveedores', $totalProveedores);
         });
 
         // Muestra el total de categorias en el sidebar

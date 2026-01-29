@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Models;
+use App\Traits\Buscar;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Compra extends Model
 {
+    use Buscar;
+
     protected $table = 'compras';
 
     protected $fillable = [
-        'codigo_compra',
+        'id',
         'fecha_compra',
-        'subtotal',
-        'impuesto',
         'total',
         'estado',
         'observaciones',
@@ -21,4 +22,23 @@ class Compra extends Model
         'user_id',
     ];
 
+    public function detalleCompra()
+    {
+        return $this->hasMany(CompraDetalle::class);
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class);
+    }
+
+    public function sucursal()
+    {
+        return $this->belongsTo(Sucursal::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

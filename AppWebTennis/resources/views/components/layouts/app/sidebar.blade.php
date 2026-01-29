@@ -19,10 +19,14 @@
 
         {{-- Proveedores --}}
         <flux:navlist class="w-64" variant="outline">
-            <flux:navlist.group heading="Proveedores" 
-                icon="clipboard-list" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('negocio.proveedores.index') }}" icon="pencil-square">Ver Proveedores</flux:navlist.item>
-                <flux:navlist.item href="{{ route('negocio.proveedores.create') }}" icon="plus">Crear Proveedor</flux:navlist.item>
+            <flux:navlist.group heading="Proveedores" icon="clipboard-list" expandable :expanded="false">
+                <flux:navlist.item href="{{ route('negocio.proveedores.index') }}" icon="pencil-square" badge="{{ $totalProveedores }}" badge:color="lime">Ver Proveedores
+                </flux:navlist.item>
+                <flux:navlist.item href="{{ route('negocio.proveedores.compras.index') }}" icon="shopping-cart">Compras Realizadas
+                </flux:navlist.item>
+                <flux:navlist.item href="{{ route('marcas.index') }}" icon="tag" badge="{{ $totalMarcas }}"
+                    badge:color="lime">Crear Marca
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
@@ -39,7 +43,8 @@
         {{-- Inventario --}}
         <flux:navlist class="w-64 mt-2" variant="outline">
             <flux:navlist.group heading="Inventario" icon="calendar" expandable :expanded="false">
-                <flux:navlist.item href="{{ route('negocio.inventario.index') }}" icon="cube">Ver Inventario</flux:navlist.item>
+                <flux:navlist.item href="{{ route('negocio.inventario.index') }}" icon="cube">Ver Inventario
+                </flux:navlist.item>
                 <flux:navlist.item href="{{ route('negocio.inventario.create') }}" icon="plus">Ingresar Productos
                 </flux:navlist.item>
 
@@ -50,15 +55,14 @@
         @can('web')
             <flux:navlist class="w-64">
                 <flux:navlist.group heading="Catálogo" expandable :expanded="false">
-                    <flux:navlist.item href="{{ route('productos.index') }}" icon="cube" badge="{{ $totalProductos }}"
-                        badge:color="lime">Productos
-                    </flux:navlist.item>
-                    <flux:navlist.item href="{{ route('marcas.index') }}" icon="tag" badge="{{ $totalMarcas }}"
-                        badge:color="lime">Marcas
-                    </flux:navlist.item>
                     <flux:navlist.item href="{{ route('categorias.index') }}" icon="cube" badge="{{ $totalCategorias }}"
                         badge:color="lime">Categorías
                     </flux:navlist.item>
+                    <flux:navlist.item href="{{ route('productos.index') }}" icon="cube" badge="{{ $totalProductos }}"
+                        badge:color="lime">Productos
+                    </flux:navlist.item>
+
+
                 </flux:navlist.group>
             </flux:navlist>
         @endcan
